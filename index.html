@@ -112,6 +112,11 @@ a {
 a:hover { color: var(--accent-primary); }
 
 /* Containers */
+.container-narrow, .container-wide {
+    position: relative;
+    z-index: 2;
+}
+
 .container-narrow {
     max-width: 800px;
     margin: 0 auto;
@@ -170,7 +175,51 @@ a:hover { color: var(--accent-primary); }
 }
 
 /* =========================================
-   BLOQUE 1: Hero Section
+   DECORATIVE SKETCHES (Background elements)
+   ========================================= */
+.decor-sketch {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    width: 250px;
+    height: auto;
+    mix-blend-mode: multiply;
+}
+
+.sketch-roma { top: 50%; left: 5%; right: auto; transform: translateY(-50%) rotate(-5deg); opacity: 0.5; width: 250px; } /* Gacetilla: Izquierda */
+.sketch-sin-sentir { top: 50%; right: 10%; left: auto; transform: translateY(-50%) rotate(4deg); opacity: 0.5; width: 240px; } /* Quote: Derecha */
+
+/* Tracklist */
+.sketch-rusty-bench { top: 20%; left: 10%; transform: rotate(-3deg); opacity: 0.5; width: 260px; }
+.sketch-no-pienso { top: 50%; right: 10%; transform: translateY(-50%) rotate(4deg); opacity: 0.5; width: 280px; }
+.sketch-pero-vos { bottom: 2%; left: 15%; transform: rotate(2deg); opacity: 0.5; width: 260px; }
+
+/* Info-grid */
+.sketch-cuadro { bottom: -20px; right: 5%; left: auto; top: auto; transform: rotate(5deg); opacity: 0.5; width: 220px; } /* Abajo a la derecha, debajo del texto */
+
+.sketch-mobile-gap { display: none; } /* Oculto en desktop para no corromper la version original */
+
+@media (max-width: 768px) {
+    .decor-sketch { width: 120px; opacity: 0.6; } /* Opacidad más alta para que tengan fuerte presencia */
+    
+    /* Foto 1: Hueco en Gacetilla (sin overflow hidden, podemos subirlo libremente) */
+    .sketch-roma { width: 140px; left: 50%; top: -45px; transform: translateX(-50%) rotate(-5deg); }
+    
+    /* Foto 2: Tracklist (banco más chico y centrado entre texto/flecha) */
+    .sketch-no-pienso { display: none; }
+    .sketch-rusty-bench { left: auto; right: 12%; top: 30%; transform: translateY(-50%) rotate(-3deg); width: 100px; }
+    .sketch-pero-vos { left: auto; right: 12%; top: 75%; transform: translateY(-50%) rotate(2deg); width: 120px; }
+
+    /* Foto 3: Hueco debajo de Bio (ahora que ampliamos el padding, entra perfecto sin cortarse) */
+    .sketch-cuadro { left: 50%; transform: translateX(-50%) rotate(5deg); bottom: 10px; right: auto; width: 150px; }
+    
+    /* Otros sketches (mobile gap de CTA) */
+    .sketch-mobile-gap { display: block; bottom: 0; left: 50%; transform: translateX(-50%) rotate(4deg); width: 140px; }
+    .sketch-sin-sentir { right: -10%; width: 140px; left: auto; }
+}
+
+/* =========================================
+   BLOQUE 1: Header / NavSection
    ========================================= */
 .hero {
     display: flex;
@@ -258,7 +307,7 @@ a:hover { color: var(--accent-primary); }
 /* =========================================
    BLOQUE 2: La Gacetilla Principal
    ========================================= */
-.gacetilla { padding: 120px 0 80px; }
+.gacetilla { padding: 120px 0 80px; position: relative; overflow: hidden; }
 
 .gacetilla-p1 {
     font-family: var(--font-heading);
@@ -270,7 +319,7 @@ a:hover { color: var(--accent-primary); }
 }
 
 @media (max-width: 768px) {
-    .gacetilla { padding: 60px 0 40px; }
+    .gacetilla { padding: 80px 0 40px; overflow: visible; } /* Reducimos espacio y permitimos desbordamiento vertical */
     .gacetilla-p1 { font-size: 1.3rem; text-align: left; }
 }
 
@@ -278,9 +327,11 @@ a:hover { color: var(--accent-primary); }
    BLOQUE 3: Banner de Influencias
    ========================================= */
 .quote-banner {
-    background-color: var(--accent-secondary);
     padding: 100px 0;
     text-align: center;
+    background-color: var(--accent-secondary);
+    position: relative;
+    overflow: hidden;
 }
 
 .quote-text {
@@ -316,7 +367,7 @@ a:hover { color: var(--accent-primary); }
 /* =========================================
    BLOQUE 4: Tracklist
    ========================================= */
-.tracklist { padding: 80px 0 60px; }
+.tracklist { padding: 80px 0 60px; position: relative; overflow: hidden; }
 
 .section-title {
     font-family: var(--font-heading);
@@ -600,7 +651,7 @@ a:hover { color: var(--accent-primary); }
 /* =========================================
    BLOQUE 5: Call to Action
    ========================================= */
-.cta { padding: 40px 0 120px; }
+.cta { padding: 40px 0 120px; position: relative; overflow: hidden; }
 
 .btn-primary {
     display: inline-block;
@@ -653,13 +704,15 @@ a:hover { color: var(--accent-primary); }
 .info-grid {
     padding: 100px 0;
     border-top: 1px solid rgba(74, 46, 43, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
 .grid-2-col {
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: start;
 }
 
 .grid-2-col::after {
@@ -671,6 +724,7 @@ a:hover { color: var(--accent-primary); }
     grid-column: 2 / 3;
     grid-row: 1;
     margin: auto;
+    align-self: center;
 }
 
 .info-col { padding: 20px 0; }
@@ -684,7 +738,7 @@ a:hover { color: var(--accent-primary); }
 }
 
 @media (max-width: 850px) {
-    .info-grid { padding: 60px 0; }
+    .info-grid { padding: 60px 0 140px; } /* Más espacio abajo para que entre el cuadro sin cortarse */
     .grid-2-col { grid-template-columns: 1fr; gap: 40px; }
     .grid-2-col::after { display: none; }
     .info-col:last-child { grid-column: 1 / 2; grid-row: 2; }
@@ -1028,6 +1082,7 @@ a:hover { color: var(--accent-primary); }
 
     <!-- BLOQUE 2: La Gacetilla Principal -->
     <section class="gacetilla fade-in-section stagger-container">
+        <img src="Bocetos Roma pagina/Roma.png" alt="" class="decor-sketch sketch-roma">
         <div class="container-narrow">
             <p class="gacetilla-p1 stagger-item">Roma es imperio y ruina. Amor al revés. Es una madre. Es la ciudad y el recuerdo eterno. Es lo que los grandes historiadores anhelan con lo que pudo ser. También es una película de Aristarain. Y el primer disco de Thiago Chalon.</p>
         </div>
@@ -1035,6 +1090,7 @@ a:hover { color: var(--accent-primary); }
 
     <!-- BLOQUE 3: Banner de Influencias (Full Width) -->
     <section class="quote-banner fade-in-section stagger-container">
+        <img src="Bocetos Roma pagina/Sin sentir.png" alt="" class="decor-sketch sketch-sin-sentir">
         <div class="container-wide">
             <p class="quote-text stagger-item">Siete canciones que no suenan a lo mismo. Arctic Monkeys, Oasis y Blur por un lado. Fito, Charly y Soda Stereo por el otro. Fleetwood Mac, Hozier y Sufjan Stevens en el medio. Y de alguna manera, suenan al mismo universo.</p>
         </div>
@@ -1042,6 +1098,9 @@ a:hover { color: var(--accent-primary); }
 
     <!-- BLOQUE 4: Tracklist -->
     <section class="tracklist fade-in-section stagger-container">
+        <img src="Bocetos Roma pagina/Rusty Bench.png" alt="" class="decor-sketch sketch-rusty-bench">
+        <img src="Bocetos Roma pagina/No pienso parar.png" alt="" class="decor-sketch sketch-no-pienso">
+        <img src="Bocetos Roma pagina/Pero vos mi amor.png" alt="" class="decor-sketch sketch-pero-vos">
         <div class="container-narrow">
             <h3 class="section-title stagger-item">Tracklist Oficial</h3>
             <ol class="tracklist-list stagger-item">
@@ -1058,6 +1117,7 @@ a:hover { color: var(--accent-primary); }
 
     <!-- BLOQUE 5: Call to Action -->
     <section class="cta fade-in-section stagger-container">
+        <img src="Bocetos Roma pagina/Salvarte de mi.png" alt="" class="decor-sketch sketch-mobile-gap">
         <div class="container-narrow text-center">
             <div class="stagger-item">
                 <a href="https://www.symphonicms.com/album/view/id/b32f02fee1f9d83f6a56000b69b07eb7" target="_blank" rel="noopener noreferrer" class="btn-primary interactive">ESCUCHÁ EL DISCO <br><span class="btn-subtitle">(Acceso Exclusivo Prensa)</span></a>
@@ -1068,6 +1128,7 @@ a:hover { color: var(--accent-primary); }
 
     <!-- BLOQUE 6: Grabación y Bio -->
     <section class="info-grid fade-in-section stagger-container">
+        <img src="Bocetos Roma pagina/Cuadro en la pared.png" alt="" class="decor-sketch sketch-cuadro">
         <div class="container-wide">
             <div class="grid-2-col">
                 <div class="info-col info-recording stagger-item">
@@ -1089,6 +1150,11 @@ a:hover { color: var(--accent-primary); }
                 <figcaption>Portada Oficial - Roma</figcaption>
             </figure>
             <figure class="film-item interactive">
+                <a href="img/Estudio 10.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
+                <img src="img/Estudio 10.jpeg" alt="Thiago Chalon">
+                <figcaption>Thiago Chalon</figcaption>
+            </figure>
+            <figure class="film-item interactive">
                 <a href="img/Estudio 1.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
                 <img src="img/Estudio 1.jpeg" alt="Trabajando en el DAW">
                 <figcaption>Producción y armado de proyecto</figcaption>
@@ -1099,6 +1165,11 @@ a:hover { color: var(--accent-primary); }
                 <figcaption>Grabación de baterías</figcaption>
             </figure>
             <figure class="film-item interactive">
+                <a href="img/Estudio 11.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
+                <img src="img/Estudio 11.jpeg" alt="Thiago Chalon">
+                <figcaption>Thiago Chalon</figcaption>
+            </figure>
+            <figure class="film-item interactive">
                 <a href="img/Estudio 3.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
                 <img src="img/Estudio 3.jpeg" alt="Grabando guitarras">
                 <figcaption>Tomas de guitarra eléctrica</figcaption>
@@ -1107,6 +1178,11 @@ a:hover { color: var(--accent-primary); }
                 <a href="img/Estudio 4.jpg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
                 <img src="img/Estudio 4.jpg" alt="Músico con guitarra acústica">
                 <figcaption>Tomas de guitarra acústica</figcaption>
+            </figure>
+            <figure class="film-item interactive">
+                <a href="img/Estudio 12.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
+                <img src="img/Estudio 12.jpeg" alt="Thiago Chalon">
+                <figcaption>Thiago Chalon</figcaption>
             </figure>
             <figure class="film-item interactive">
                 <a href="img/Estudio 5.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
@@ -1122,21 +1198,6 @@ a:hover { color: var(--accent-primary); }
                 <a href="img/Estudio 9.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
                 <img src="img/Estudio 9.jpeg" alt="Productor operando la consola">
                 <figcaption>Deja Vu Estudios</figcaption>
-            </figure>
-            <figure class="film-item interactive">
-                <a href="img/Estudio 10.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
-                <img src="img/Estudio 10.jpeg" alt="Thiago Chalon">
-                <figcaption>Thiago Chalon</figcaption>
-            </figure>
-            <figure class="film-item interactive">
-                <a href="img/Estudio 11.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
-                <img src="img/Estudio 11.jpeg" alt="Thiago Chalon">
-                <figcaption>Thiago Chalon</figcaption>
-            </figure>
-            <figure class="film-item interactive">
-                <a href="img/Estudio 12.jpeg" download class="download-btn" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
-                <img src="img/Estudio 12.jpeg" alt="Thiago Chalon">
-                <figcaption>Thiago Chalon</figcaption>
             </figure>
         </div>
     </section>
@@ -1160,7 +1221,7 @@ a:hover { color: var(--accent-primary); }
                 </div>
                 <div class="footer-col">
                     <strong>Contacto:</strong><br>
-                    <a href="mailto:thiago.chalon20@gmail.com" class="interactive">thiago.chalon20@gmail.com</a><br>
+                    <a href="mailto:music@thiagochalon.com" class="interactive">music@thiagochalon.com</a><br>
                     <a href="https://instagram.com/thiago.chalon" target="_blank" rel="noopener noreferrer" style="margin-top: 5px; display: inline-block;" class="interactive">@thiago.chalon</a>
                 </div>
             </div>
