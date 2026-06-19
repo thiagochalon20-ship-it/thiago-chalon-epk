@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería oficial | Thiago Chalon — Roma</title>
+    <meta name="description" content="Fotos oficiales del proceso de grabación de Roma, el álbum debut de Thiago Chalon.">
+    <link rel="canonical" href="https://thiagochalon.com/galeria">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Galería oficial | Thiago Chalon — Roma">
+    <meta property="og:description" content="Fotos oficiales del proceso de grabación de Roma, el álbum debut de Thiago Chalon.">
+    <meta property="og:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+    <meta property="og:url" content="https://thiagochalon.com/galeria">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Thiago Chalon">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Galería oficial | Thiago Chalon — Roma">
+    <meta name="twitter:description" content="Fotos oficiales del proceso de grabación de Roma, el álbum debut de Thiago Chalon.">
+    <meta name="twitter:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS global -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* =========================================
+           GALERIA ESPECÍFICO
+           ========================================= */
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        .galeria-main {
+            padding: 120px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .galeria-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .galeria-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+        }
+
+        .galeria-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; /* Cuadrados perfectos (aspect ratio 1:1) */
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .galeria-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* =========================================
+           LIGHTBOX GALLERY (Copiado de Inicio)
+           ========================================= */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: auto; 
+        }
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.97) translateY(15px);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        }
+        .lightbox.active .lightbox-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            user-select: none;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: zoom-in;
+        }
+        .lightbox-img.zoomed {
+            transform: scale(1.4);
+            cursor: zoom-out;
+        }
+        .lightbox-caption {
+            color: #E5DFD3;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-style: italic;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .lightbox-close, .lightbox-prev, .lightbox-next {
+            position: absolute;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            padding: 20px;
+            font-family: sans-serif;
+        }
+        .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
+        .lightbox-close {
+            top: 25px;
+            right: 30px;
+            font-size: 3rem;
+            line-height: 1;
+            padding: 15px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-download {
+            position: absolute;
+            top: 25px;
+            right: 90px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-download:hover { opacity: 1; }
+        .lightbox-download svg { width: 28px; height: 28px; fill: currentColor; }
+        .lightbox-prev { top: 50%; left: 20px; font-size: 2.5rem; transform: translateY(-50%); }
+        .lightbox-next { top: 50%; right: 20px; font-size: 2.5rem; transform: translateY(-50%); }
+        @media (max-width: 768px) {
+            .lightbox-prev, .lightbox-next { display: none; }
+            .lightbox-close { top: 15px; right: 15px; padding: 10px; height: 44px; font-size: 2.5rem; display: flex; align-items: center; justify-content: center; }
+            .lightbox-download { top: 15px; right: 65px; padding: 10px; height: 44px; display: flex; align-items: center; justify-content: center; }
+            .lightbox-download svg { width: 24px; height: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER NAVEGACION (Fase 1) -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <ul class="main-nav">
+                <li><a href="/" class="interactive">Inicio</a></li>
+                <li><a href="/music" class="interactive">Música</a></li>
+                <li><a href="/galeria" class="interactive active">Galería</a></li>
+                <li><a href="/letras" class="interactive">Letras</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="galeria-main">
+        <h1 class="section-title text-center" style="margin-bottom: 10px;">Galería</h1>
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <a href="/galeria-roma-prensa.zip" download class="btn-primary interactive" style="font-size: 0.9rem; padding: 12px 30px;">Descargar todas (ZIP) — para prensa</a>
+        </div>
+
+        <!-- Contenedor dinámico del grid -->
+        <div class="galeria-grid" id="galeriaGrid"></div>
+    </main>
+
+    <!-- LIGHTBOX MODAL (Copiado de Inicio) -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close interactive" id="lightbox-close">&times;</button>
+        <a href="" download class="lightbox-download interactive" id="lightbox-download" title="Descargar imagen"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a>
+        <button class="lightbox-prev interactive" id="lightbox-prev">&#10094;</button>
+        <button class="lightbox-next interactive" id="lightbox-next">&#10095;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Vista ampliada">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- CURSOR MAGNÉTICO GLOBAL (Reutilizado de script.js) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script>
+        /**
+         * =========================================
+         * FÁCIL MANTENIMIENTO (SISTEMA DE DATOS)
+         * =========================================
+         * El array de fotos se genera automáticamente al correr el script de Node local.
+         * Para actualizar:
+         * 1. Poné tus fotos en /source-photos/
+         * 2. Corré: npm run build:gallery
+         * 3. Se van a generar las miniaturas, el ZIP y este archivo js/galeria-data.js
+         */
+    </script>
+    <script src="js/galeria-data.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. GENERAR GRID DINÁMICAMENTE CON LAZY LOADING
+            const gridContainer = document.getElementById('galeriaGrid');
+            
+            galeriaData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'galeria-item interactive';
+                div.innerHTML = `<img src="${item.thumb}" alt="${item.alt}" loading="lazy">`;
+                
+                // Click abre el lightbox en el índice correspondiente
+                div.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+                
+                gridContainer.appendChild(div);
+            });
+
+            // 2. LÓGICA DEL LIGHTBOX (Porteado de index.html)
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const btnClose = document.getElementById('lightbox-close');
+            const btnPrev = document.getElementById('lightbox-prev');
+            const btnNext = document.getElementById('lightbox-next');
+            const btnDownload = document.getElementById('lightbox-download');
+            
+            let currentImageIndex = 0;
+
+            function openLightbox(index) {
+                currentImageIndex = index;
+                updateLightboxContent();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                lightboxImg.classList.remove('zoomed');
+                document.body.style.overflow = '';
+            }
+
+            function showNext() {
+                currentImageIndex = (currentImageIndex + 1) % galeriaData.length;
+                updateLightboxContent();
+            }
+
+            function showPrev() {
+                currentImageIndex = (currentImageIndex - 1 + galeriaData.length) % galeriaData.length;
+                updateLightboxContent();
+            }
+
+            function updateLightboxContent() {
+                lightboxImg.classList.remove('zoomed');
+                const data = galeriaData[currentImageIndex];
+                lightboxImg.src = data.full;
+                lightboxCaption.textContent = data.alt;
+                if (btnDownload) btnDownload.href = data.full;
+            }
+
+            // Zoom In/Out
+            lightboxImg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                lightboxImg.classList.toggle('zoomed');
+            });
+
+            // Controles
+            btnClose.addEventListener('click', closeLightbox);
+            btnNext.addEventListener('click', showNext);
+            btnPrev.addEventListener('click', showPrev);
+
+            // Cerrar al clickear en fondo
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                    closeLightbox();
+                }
+            });
+
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft') showPrev();
+            });
+
+            // Swipe básico para móviles
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            lightbox.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+
+            lightbox.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50) showNext();
+                if (touchEndX > touchStartX + 50) showPrev();
+            }, {passive: true});
+        });
+    </script>
+    
+    <!-- Script global (Cursor, Stagger, etc) -->
+    <script src="script.js"></script>
+</body>
+</html>

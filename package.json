@@ -1,0 +1,13 @@
+{
+  "name": "roma-epk",
+  "version": "1.0.0",
+  "description": "Thiago Chalon - Roma EPK",
+  "main": "index.js",
+  "scripts": {
+    "build:gallery": "node scripts/build-gallery.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "sharp": "^0.33.4"
+  }
+}

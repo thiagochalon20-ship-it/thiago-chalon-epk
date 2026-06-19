@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuchá Roma en Spotify, Apple Music y más | Thiago Chalon</title>
+    <meta name="description" content="Escuchá Roma, el álbum debut de Thiago Chalon, en tu plataforma favorita.">
+    <link rel="canonical" href="https://thiagochalon.com/music">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Escuchá Roma en Spotify, Apple Music y más | Thiago Chalon">
+    <meta property="og:description" content="Escuchá Roma, el álbum debut de Thiago Chalon, en tu plataforma favorita.">
+    <meta property="og:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+    <meta property="og:url" content="https://thiagochalon.com/music">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Thiago Chalon">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Escuchá Roma en Spotify, Apple Music y más | Thiago Chalon">
+    <meta name="twitter:description" content="Escuchá Roma, el álbum debut de Thiago Chalon, en tu plataforma favorita.">
+    <meta name="twitter:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fuentes ligeras -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS del Header global -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* =========================================
+           SMART LINK PAGE SPECIFICS
+           ========================================= */
+        body {
+            /* Mantenemos el fondo pero sin animaciones de ruido pesado */
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            cursor: auto; /* Anula el cursor custom en esta ruta para máxima velocidad */
+        }
+
+        .smart-link-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px; /* Padding top compensa el nav fijo */
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 1. Cover Image y Animación */
+        .cover-wrapper {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            margin-bottom: 25px;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+            cursor: zoom-in;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-image:hover {
+            transform: scale(1.04);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+        }
+
+        /* Lightbox Overlay específico para el cover */
+        .cover-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.92);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            cursor: zoom-out;
+        }
+
+        .cover-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cover-image.zoomed {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 90vw !important;
+            height: 90vw !important;
+            max-width: 80vh !important;
+            max-height: 80vh !important;
+            transform: translate(-50%, -50%) scale(1) !important;
+            z-index: 10001;
+            cursor: zoom-out;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s, height 0.4s, top 0.4s, left 0.4s;
+        }
+
+        /* 2. Textos */
+        .album-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin: 0 0 35px 0;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        /* 3. Botones Nativos/Minimalistas */
+        .platform-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 56px;
+            margin-bottom: 16px;
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid var(--text-main);
+            border-radius: 0px; /* Consistente con el estilo de botones de CTA */
+            transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 4px 4px 0px rgba(74, 46, 43, 0.3);
+            will-change: transform;
+        }
+
+        .platform-btn:hover {
+            background-color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: var(--bg-main);
+            box-shadow: 5px 5px 0px rgba(122, 23, 18, 0.3);
+        }
+
+        .platform-btn:active {
+            /* Efecto de presión */
+            transform: scale(0.97) translateY(2px);
+            box-shadow: 1px 1px 0px rgba(74, 46, 43, 0.3);
+            background-color: var(--accent-primary);
+        }
+
+        .platform-btn svg {
+            width: 22px;
+            height: 22px;
+            margin-right: 12px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .smart-link-container {
+                justify-content: flex-start;
+                padding-top: 110px; /* Header clearance + ~30px fixed space */
+                padding-bottom: 40px;
+            }
+            .cover-wrapper {
+                width: 220px;
+                height: 220px;
+            }
+            .album-title {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+            .platform-btn {
+                min-height: 52px;
+                font-size: 1.1rem;
+            }
+        }
+        /* 4. PERFIL CHIP */
+        .profile-chip-container {
+            background-color: rgba(229, 223, 211, 0.4);
+            border: 1px solid rgba(74, 46, 43, 0.15);
+            border-radius: 50px;
+            padding: 6px 16px 6px 6px;
+            margin: 20px auto 30px auto;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+            width: max-content;
+            max-width: 100%;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .profile-chip-container:hover {
+            background-color: rgba(229, 223, 211, 0.8);
+            border-color: rgba(74, 46, 43, 0.3);
+        }
+
+        .profile-chip-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .profile-chip-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 25%;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .profile-chip-name {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            color: var(--text-main);
+            white-space: nowrap;
+            transition: all 0.4s ease;
+            font-weight: 600;
+        }
+
+        .profile-expanded-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-expanded-content p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 15px 0;
+            color: var(--text-main);
+            opacity: 0.9;
+        }
+
+        .profile-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .profile-instagram:hover {
+            color: var(--text-main);
+        }
+
+        .profile-instagram svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* ESTADO EXPANDIDO */
+        .profile-chip-container.expanded {
+            border-radius: 20px;
+            padding: 25px 25px;
+            max-width: 380px;
+            background-color: rgba(229, 223, 211, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .profile-chip-container.expanded .profile-chip-header {
+            flex-direction: column;
+        }
+
+        .profile-chip-container.expanded .profile-chip-img {
+            width: 85px;
+            height: 85px;
+            margin-right: 0;
+            margin-bottom: 12px;
+        }
+
+        .profile-chip-container.expanded .profile-chip-name {
+            font-size: 1.3rem;
+        }
+
+        .profile-chip-container.expanded .profile-expanded-content {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-chip-container {
+                margin: 15px auto 25px auto;
+            }
+            .profile-chip-container.expanded {
+                max-width: 90vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER NAVEGACION (Fase 1) -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <ul class="main-nav">
+                <li><a href="/" class="interactive">Inicio</a></li>
+                <li><a href="/music" class="interactive active">Música</a></li>
+                <li><a href="/galeria" class="interactive">Galería</a></li>
+                <li><a href="/letras" class="interactive">Letras</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="smart-link-container">
+        <!-- CHIP DE PERFIL -->
+        <div class="profile-chip-container" id="profileChip">
+            <div class="profile-chip-header">
+                <img src="img/perfil-thiago.jpg" alt="Thiago Chalon" class="profile-chip-img">
+                <span class="profile-chip-name">Thiago Chalon</span>
+            </div>
+            <div class="profile-expanded-content">
+                <p>Thiago Chalon no vino a irrumpir en ninguna escena. Músico y compositor porteño, su álbum debut Roma mezcla rock, folk y un poquito de jazz (con el perdón de los músicos en serio) en siete historias sobre que te pidan ir a bailar y vos llevarla al cine.</p>
+                <a href="https://www.instagram.com/thiago.chalon" target="_blank" rel="noopener noreferrer" class="profile-instagram interactive" aria-label="Instagram de Thiago Chalon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    @thiago.chalon
+                </a>
+            </div>
+        </div>
+
+        <!-- Overlay del Lightbox -->
+        <div class="cover-overlay" id="coverOverlay"></div>
+
+        <div class="cover-wrapper">
+            <img src="img/Roma.webp" alt="Portada del disco Roma de Thiago Chalon" class="cover-image" fetchpriority="high" id="albumCover">
+        </div>
+
+        <h1 class="album-title">Thiago Chalon — Roma</h1>
+
+        <!-- Botones con graceful degradation (href con fallback web) -->
+        <a href="https://open.spotify.com/artist/1Sk41HYNzHRQXudNPvU0RG?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="spotify" aria-label="Escuchar Roma en Spotify">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Spotify
+        </a>
+        <a href="https://music.apple.com/es/artist/thiago-chalon/6776723181?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="apple" aria-label="Escuchar Roma en Apple Music">
+            <svg viewBox="0 0 24 24"><path d="M17.05 13.56c-.02-2.31 1.88-3.41 1.97-3.46-1.08-1.58-2.76-1.79-3.36-1.82-1.43-.15-2.79.84-3.53.84-.73 0-1.85-.82-3.03-.8-1.52.02-2.93.89-3.71 2.25-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.65 2.32 2.85 2.28 1.16-.04 1.6-.74 3.01-.74 1.4 0 1.81.74 3.03.7 1.25-.04 2.01-1.13 2.75-2.23.86-1.26 1.21-2.48 1.23-2.54-.03-.01-2.31-.89-2.35-3.56zm-1.98-6.1c.64-.78 1.07-1.86.95-2.94-1.01.04-2.14.67-2.79 1.45-.58.68-1.08 1.78-.94 2.85 1.13.09 2.14-.58 2.78-1.36z"/></svg>
+            Apple Music
+        </a>
+        <a href="https://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY&utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="youtube" aria-label="Escuchar Roma en YouTube Music">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube Music
+        </a>
+        <a href="https://tidal.com/artist/80639129?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="tidal" aria-label="Escuchar Roma en Tidal">
+            <svg viewBox="0 0 24 24"><path d="M12 4L8 8 4 4 0 8l4 4 4-4 4 4 4-4 4 4 4-4-4-4-4 4-4-4z"/><path d="M12 20l-4-4 4-4 4 4-4 4z"/></svg>
+            Tidal
+        </a>
+    </main>
+
+    <script>
+        // 1. LÓGICA DE ZOOM EN PORTADA
+        const cover = document.getElementById('albumCover');
+        const overlay = document.getElementById('coverOverlay');
+
+        function toggleZoom() {
+            cover.classList.toggle('zoomed');
+            overlay.classList.toggle('active');
+            if (cover.classList.contains('zoomed')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        cover.addEventListener('click', toggleZoom);
+        overlay.addEventListener('click', toggleZoom);
+
+        // 2. CONFIGURACIÓN DE RUTAS Y TRACKING
+        const utmParams = 'utm_source=instagram&utm_medium=bio_music_page';
+        
+        // Función inteligente para no romper URLs que ya tengan queries
+        function appendUtm(url) {
+            return url + (url.includes('?') ? '&' : '?') + utmParams;
+        }
+
+        const platforms = {
+            spotify: {
+                web: appendUtm('https://open.spotify.com/artist/1Sk41HYNzHRQXudNPvU0RG'),
+                iosUniversal: true, 
+                androidScheme: appendUtm('spotify://artist/1Sk41HYNzHRQXudNPvU0RG')
+            },
+            apple: {
+                web: appendUtm('https://music.apple.com/es/artist/thiago-chalon/6776723181'),
+                iosUniversal: true,
+                androidScheme: null // Mantenemos el default a la espera de la prueba
+            },
+            youtube: {
+                web: appendUtm('https://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY'),
+                iosUniversal: false,
+                iosScheme: 'vnd.youtube://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY',
+                androidScheme: 'vnd.youtube://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY'
+            },
+            tidal: {
+                web: appendUtm('https://tidal.com/artist/80639129'),
+                iosUniversal: true, // Mantenemos la asunción a la espera de la prueba
+                androidScheme: appendUtm('tidal://artist/80639129')
+            }
+        };
+
+        // Detección de OS
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const isIOS = (/iPad|iPhone|iPod/.test(ua)) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        const isAndroid = /android/i.test(ua);
+        const isMobile = isIOS || isAndroid;
+
+        // Función auxiliar para fallbacks usando un timer limpio
+        function triggerFallback(url, delay = 1200) {
+            let fallbackTriggered = false;
+            let timerCancelled = false;
+            let reattempted = false;
+
+            const timer = setTimeout(() => {
+                if (!timerCancelled) {
+                    fallbackTriggered = true;
+                    window.location.href = url;
+                }
+            }, delay);
+            
+            const cleanup = () => {
+                if (!fallbackTriggered) {
+                    clearTimeout(timer);
+                    timerCancelled = true;
+                }
+            };
+
+            // Cancelar fallback si el usuario sale de la pestaña (ej. la app abrió)
+            window.addEventListener('pagehide', cleanup, { once: true });
+            
+            // Lógica de reintento en edge cases donde la app no abrió pero el timer se canceló (ej. pantalla bloqueada y reactivada)
+            const handleVisibility = () => {
+                if (document.visibilityState === 'hidden') {
+                    cleanup();
+                } else if (document.visibilityState === 'visible') {
+                    if (timerCancelled && !fallbackTriggered && !reattempted) {
+                        reattempted = true;
+                        window.location.href = url;
+                    }
+                }
+            };
+            
+            document.addEventListener('visibilitychange', handleVisibility);
+            
+            window.addEventListener('pageshow', () => {
+                if (timerCancelled && !fallbackTriggered && !reattempted) {
+                    reattempted = true;
+                    window.location.href = url;
+                }
+            });
+        }
+
+        // 3. EVENTOS DE CLICK Y DEEP LINKING 
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Interceptar click nativo y procesarlo asincrónicamente
+                e.preventDefault();
+                
+                const pid = this.getAttribute('data-platform');
+                const data = platforms[pid];
+                
+                if (!isMobile) {
+                    // Desktop: Ir directo a web
+                    window.location.href = data.web;
+                    return;
+                }
+
+                if (isIOS) {
+                    if (data.iosUniversal) {
+                        window.location.href = data.web;
+                    } else if (data.iosScheme) {
+                        triggerFallback(data.web, 1200);
+                        window.location.href = data.iosScheme;
+                    } else {
+                        window.location.href = data.web;
+                    }
+                } else if (isAndroid) {
+                    if (data.androidScheme) {
+                        triggerFallback(data.web, 1200);
+                        window.location.href = data.androidScheme;
+                    } else {
+                        window.location.href = data.web;
+                    }
+                } else {
+                    window.location.href = data.web;
+                }
+            });
+        });
+        // 4. LÓGICA DE PERFIL CHIP
+        const profileChip = document.getElementById('profileChip');
+        if (profileChip) {
+            profileChip.addEventListener('click', function(e) {
+                if (e.target.closest('a')) return;
+                
+                const isExpanded = this.classList.contains('expanded');
+                this.classList.toggle('expanded');
+                
+                if (!isExpanded) {
+                    setTimeout(() => {
+                        const rect = this.getBoundingClientRect();
+                        const isOut = (rect.bottom + 20) > (window.innerHeight || document.documentElement.clientHeight);
+                        if (isOut) {
+                            this.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                        }
+                    }, 150);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

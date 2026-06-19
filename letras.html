@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letras y créditos | Roma — Thiago Chalon</title>
+    <meta name="description" content="Letras completas y créditos de las 7 canciones de Roma, el álbum debut de Thiago Chalon.">
+    <link rel="canonical" href="https://thiagochalon.com/letras">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Letras y créditos | Roma — Thiago Chalon">
+    <meta property="og:description" content="Letras completas y créditos de las 7 canciones de Roma, el álbum debut de Thiago Chalon.">
+    <meta property="og:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+    <meta property="og:url" content="https://thiagochalon.com/letras">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Thiago Chalon">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Letras y créditos | Roma — Thiago Chalon">
+    <meta name="twitter:description" content="Letras completas y créditos de las 7 canciones de Roma, el álbum debut de Thiago Chalon.">
+    <meta name="twitter:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS global -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Script para evitar smooth scroll en la carga inicial si hay hash (e.g., #creditos) -->
+    <style>
+        html.disable-smooth-scroll { scroll-behavior: auto !important; }
+    </style>
+    <script>
+        if (window.location.hash) {
+            document.documentElement.classList.add('disable-smooth-scroll');
+            window.addEventListener('load', () => {
+                setTimeout(() => document.documentElement.classList.remove('disable-smooth-scroll'), 50);
+            });
+        }
+    </script>
+    
+    <style>
+        /* =========================================
+           LETRAS ESPECÍFICO
+           ========================================= */
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        .letras-main {
+            padding: 120px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        /* Acordeón de letras inspirado en el tracklist */
+        .lyrics-accordion {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .accordion-item {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-style: italic;
+            border-bottom: 1px solid rgba(74, 46, 43, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: baseline;
+            width: 100%;
+            background: none;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            cursor: pointer;
+            text-align: left;
+            padding: 15px 0;
+            outline: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            color: var(--accent-primary);
+            padding-left: 10px;
+        }
+
+        .accordion-icon {
+            margin-left: auto;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            color: var(--accent-primary);
+        }
+
+        .accordion-item.active .accordion-header {
+            color: var(--accent-primary);
+            padding-left: 10px;
+            border-bottom-color: transparent;
+        }
+
+        .accordion-item.active {
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .accordion-item.active .accordion-content {
+            opacity: 1;
+            /* El max-height se ajusta por JS para que sea fluido */
+        }
+
+        /* Estilo tipográfico para la letra */
+        .lyrics-text {
+            font-family: 'Crimson Text', serif; /* Serif legible y elegante */
+            font-size: 1.15rem;
+            line-height: 1.7; /* Generoso para respirar */
+            font-style: normal;
+            white-space: pre-line; /* Mantiene saltos de línea y estrofas */
+            max-width: 65ch; /* Ancho cómodo de lectura */
+            margin: 0;
+            padding: 10px 0 40px 10px;
+            color: var(--text-main);
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-item { font-size: 1.2rem; }
+            .lyrics-text { 
+                font-size: 1.05rem; 
+                max-width: 100%; /* Ajuste a pantalla en mobile */
+                padding: 10px 0 30px 0;
+            }
+        }
+
+        /* =========================================
+           CRÉDITOS
+           ========================================= */
+        .credits-section {
+            max-width: 600px;
+            margin: 80px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(74, 46, 43, 0.1);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .credits-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .credits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .credits-list li {
+            margin-bottom: 12px;
+        }
+
+        .credits-list a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom-color 0.2s;
+            font-weight: 500;
+        }
+
+        .credits-list a:hover {
+            border-bottom-color: var(--accent-primary);
+        }
+
+        /* Etiqueta especial para handle pendiente */
+        .missing-handle {
+            color: #d9534f;
+            font-style: italic;
+            border-bottom: 1px dotted #d9534f;
+            cursor: help;
+        }
+
+        .studios-list p {
+            margin-bottom: 8px;
+        }
+        
+        .studios-list a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER NAVEGACION (Fase 1) -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <ul class="main-nav">
+                <li><a href="/" class="interactive">Inicio</a></li>
+                <li><a href="/music" class="interactive">Música</a></li>
+                <li><a href="/galeria" class="interactive">Galería</a></li>
+                <li><a href="/letras" class="interactive active">Letras</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="letras-main">
+        <h1 class="section-title text-center">Letras de Roma</h1>
+        
+        <ul class="lyrics-accordion">
+            <!-- 1 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">01.</span> <span class="track-name">No pienso parar</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">Cómo hablamos una vez
+te retrato en español
+así te puedo ver
+como hacíamos cada mes
+donde todo pasaba y nada a la vez
+
+Me estaré enamorando de tu voz
+no quedó otra que la idealización
+Sos un bardo mi amor
+pateaste el tablero
+causaste un temblor
+
+Tanto buscar y tantas vueltas
+para darme cuenta
+que la intimidad era una canción con vos
+
+Mis ojos cambiaron desde que te vi
+no es culpa de nadie este frenesí
+yo toco por vos
+no sé qué sentir
+Y eso también es sentir
+Pero no quiero o no puedo
+
+Desarmo el sosiego
+sofoco tu ego
+tus ojos me embisten
+ya no te entreveo
+disuelvo lo hecho
+todo está mal hecho
+no dejo más pistas
+fusilas mi pecho
+no tengo una ruta
+no hay presupuesto
+no encuentro palabras
+no entiendo tus miedos
+la doxa condena que envuelve mi ser
+no para un segundo
+voy a correr
+
+Pero quizás no es otro match más
+de este eterno vaivén
+Pero quizás tal vez
+no pienso parar
+voy a correr
+
+Tanto buscar y tantas vueltas
+para darme cuenta
+que la intimidad era una canción con vos</div>
+                </div>
+            </li>
+
+            <!-- 2 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">02.</span> <span class="track-name">Cuadro en la pared</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">Colgué tu cuadro en la pared
+Rompí ventanas, lo intenté
+Palabras simples de entender
+Pero en mi mente es al revés
+
+Y es tan extraño de entender
+Dejé mi alma en un papel
+Quizás no es el daño de verte bien
+Pero no quiero comprender
+
+Una remera y un café
+Los mismos planos son de ayer
+Rebecca o Laura en la pared
+Pero en mi mente es al revés
+
+Y es tan extraño de entender
+Dejé mi alma en un papel
+Quizás no es el daño de verte bien
+Pero no quiero comprender
+
+Quizás ya no quieras más
+Ya no quiero pensar, ya no quiero flashear
+Tal vez siempre quise que seas parte
+del decorado de mi hogar
+Y nunca di lugar, ni cicatrizar
+Soy un mal tipo, qué más da
+Ya no quiero, ya no quiero pensar
+
+Madeleine, Kitty March, Jennie
+Tenue, luz marchita, te fagocita
+Tenue, luz marchita, te hipnotiza
+Tenue, luz marchita, te idealiza
+Quizás ya no quiera más
+Tenue, luz marchita, te idealiza</div>
+                </div>
+            </li>
+
+            <!-- 3 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">03.</span> <span class="track-name">Sin sentir</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">Otra vez estoy acá
+pidiendo sentir más
+y tal vez pueda ver
+un poco más allá de mí
+cuánto más vas a estar sin sentir?
+
+Cuándo fue la última vez
+que sentiste al mundo entero?
+fue un Acto en Cuestión?
+fue un susurro?
+fue un suspiro pasajero?
+mi reflejo se quemó con tus besos y un espejo
+y mis lágrimas son de hoy,
+ya no entiendo este tiempo
+
+Cuánto más vas a estar sin sentir?
+
+Cuándo más vas a estar?</div>
+                </div>
+            </li>
+
+            <!-- 4 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">04.</span> <span class="track-name">Rusty Bench Jazz</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">We meet again on a rusty bench
+beneath the fading trees
+your smile was soft a little tense
+yet warm enough for me
+
+We walk along the path
+the world just melted grey
+no talk of future at all
+just watching shadows dance and play
+
+And even though we must go
+time has moved on and on
+but you still feel close to me
+
+The city sighed beneath our feet,
+but it felt like a part of me
+and when i realize it was real,
+it was real for me
+real real for me
+
+And even though we must go
+time has moved on and on
+but you still feel close to me
+
+The evening settle cold and blue
+the street light call us home
+we fade into our separate worlds
+but I am not really gone</div>
+                </div>
+            </li>
+
+            <!-- 5 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">05.</span> <span class="track-name">Pero vos mi amor</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">Entre miradas y certezas
+me perdí media cabeza
+Disimulo con grandeza
+La condena que me pesa
+
+Pero vos mi amor
+ay no...
+
+Y atreves de la certeza
+certeza, un pequeño escándalo
+de tu compasión
+
+Pero vos mi amor, ay no...
+
+Mirada fugaz y vos
+Saliste a buscar otra habitación
+
+Tururu
+
+Mirada fugaz y vos
+Saliste a buscar otra habitación
+
+Mi amor que casualidad
+te vas te vas te vas
+
+Mi amor que casualidad
+te vas te vas te vas
+
+Mi amor que casualidad
+te vas te vas te vas...</div>
+                </div>
+            </li>
+
+            <!-- 6 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">06.</span> <span class="track-name">Salvarte de mí</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">Cuando el humo impacte en la pantalla
+toda la esencia quedará impregnada
+de lo que no supimos ser
+o eso que no llegamos a ver
+
+Quizás la sombra me amedrentó
+y no quise buscar tu perdón
+tal vez el miedo que me segó
+o el eco de los dos
+
+Una revelación
+fue lo que tomó
+para que vengas corriendo hoy
+sin hesitación
+
+Hace meses que pienso en buscarte
+pero prometí
+que del fin del mundo
+iba a salvarte
+salvarte de mí
+de mí
+
+Una revelación
+para que vengas corriendo hoy</div>
+                </div>
+            </li>
+
+            <!-- 7 -->
+            <li class="accordion-item">
+                <button class="accordion-header interactive">
+                    <span class="track-num">07.</span> <span class="track-name">Roma</span>
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="lyrics-text">Un lugar extraño
+sentimiento marginal
+me miras como si el mundo no está más
+con el tiempo que se va
+y en mi voz otro tonto más
+
+La ciudad vende promesas que no puede ni cumplir
+Te da Días de vinilo para huir
+anhelando verte ahí
+pero encontré al mismo tonto por ahí
+
+Te escribí para olvidarte
+pero el tiempo no pasó
+te busqué en todas partes
+en canciones que no sonó
+cuando el día cae lento...
+
+Una voz al fondo
+un Breve Cielo
+una señal
+e inundé pantallas por sentir
+para poderte escribir
+Y al final vi morir al mismo tonto por ahí
+
+No fue culpa de uno
+ni el destino quiso actuar
+simplemente miramos hacia Roma
+y ya nada fue igual
+Solo me queda tu recuerdo mamá</div>
+                </div>
+            </li>
+        </ul>
+
+        <!-- CRÉDITOS -->
+        <section class="credits-section" id="creditos">
+            <h3 class="section-title" style="margin-bottom: 30px;">Créditos Generales</h3>
+            <ul class="credits-list">
+                <li>Morena Colman — Producción — <a href="https://instagram.com/morerc__" target="_blank" rel="noopener noreferrer" class="interactive">@morerc__</a></li>
+                <li>Vicente Ortiz — Guitarra eléctrica — <a href="https://instagram.com/vicenteortiz__" target="_blank" rel="noopener noreferrer" class="interactive">@vicenteortiz__</a></li>
+                <li>Josefina Pérez — Bajo — <a href="https://instagram.com/_perezjosee" target="_blank" rel="noopener noreferrer" class="interactive">@_perezjosee</a></li>
+                <li>Juan Cruz Barrera — Batería — <a href="https://instagram.com/juan.barreraa" target="_blank" rel="noopener noreferrer" class="interactive">@juan.barreraa</a></li>
+                <li>Emi Romero — Teclados — <a href="https://instagram.com/emiromero____" target="_blank" rel="noopener noreferrer" class="interactive">@emiromero____</a></li>
+                <li>Jacufre — Saxofón — <a href="https://instagram.com/jacufre" target="_blank" rel="noopener noreferrer" class="interactive">@jacufre</a></li>
+                <li>Popi Corrales — Mezcla y masterización — <a href="https://instagram.com/popicorrales" target="_blank" rel="noopener noreferrer" class="interactive">@popicorrales</a></li>
+            </ul>
+            <div class="studios-list">
+                <p>Grabado en <a href="https://instagram.com/dejavu_estudios" target="_blank" rel="noopener noreferrer" class="interactive">@dejavu_estudios</a></p>
+                <p>Mezclado y masterizado en <a href="https://instagram.com/amarrikiproducciones" target="_blank" rel="noopener noreferrer" class="interactive">@amarrikiproducciones</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Cursor Magnético Global -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // LÓGICA DEL ACORDEÓN
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    
+                    // Toggle activo
+                    const isActive = item.classList.contains('active');
+
+                    // Patrón Acordeón independiente: abrir una no cierra las demás.
+                    if (!isActive) {
+                        item.classList.add('active');
+                        // Se establece el max-height al scrollHeight del contenido para animar la altura dinámicamente
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        item.classList.remove('active');
+                        content.style.maxHeight = null;
+                    }
+                });
+            });
+
+            // Recalcular altura en resize para evitar cortes de texto si la pantalla cambia de tamaño/orientación
+            window.addEventListener('resize', () => {
+                document.querySelectorAll('.accordion-item.active .accordion-content').forEach(content => {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                });
+            });
+        });
+    </script>
+    
+    <!-- Script global (Cursor magnético, etc) -->
+    <script src="script.js"></script>
+</body>
+</html>
