@@ -316,6 +316,18 @@
                 lightboxImg.src = data.full;
                 lightboxCaption.textContent = data.alt;
                 if (btnDownload) btnDownload.href = data.full;
+                
+                // Precargar la imagen siguiente y anterior en segundo plano para fluidez al swipear
+                preloadImage(currentImageIndex + 1);
+                preloadImage(currentImageIndex - 1);
+            }
+
+            function preloadImage(index) {
+                const wrappedIndex = (index + galeriaData.length) % galeriaData.length;
+                if (galeriaData[wrappedIndex] && galeriaData[wrappedIndex].full) {
+                    const img = new Image();
+                    img.src = galeriaData[wrappedIndex].full;
+                }
             }
 
             // Zoom In/Out
