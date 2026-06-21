@@ -369,7 +369,7 @@
         <h1 class="album-title">Thiago Chalon — Roma</h1>
 
         <!-- Botones con graceful degradation (href con fallback web) -->
-        <a href="https://open.spotify.com/artist/1Sk41HYNzHRQXudNPvU0RG?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="spotify" aria-label="Escuchar Roma en Spotify">
+        <a href="https://open.spotify.com/album/7w4C4qvZLG6JggTMFyXMMW?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="spotify" aria-label="Escuchar Roma en Spotify">
             <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
             Spotify
         </a>
@@ -377,11 +377,11 @@
             <svg viewBox="0 0 24 24"><path d="M17.05 13.56c-.02-2.31 1.88-3.41 1.97-3.46-1.08-1.58-2.76-1.79-3.36-1.82-1.43-.15-2.79.84-3.53.84-.73 0-1.85-.82-3.03-.8-1.52.02-2.93.89-3.71 2.25-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.65 2.32 2.85 2.28 1.16-.04 1.6-.74 3.01-.74 1.4 0 1.81.74 3.03.7 1.25-.04 2.01-1.13 2.75-2.23.86-1.26 1.21-2.48 1.23-2.54-.03-.01-2.31-.89-2.35-3.56zm-1.98-6.1c.64-.78 1.07-1.86.95-2.94-1.01.04-2.14.67-2.79 1.45-.58.68-1.08 1.78-.94 2.85 1.13.09 2.14-.58 2.78-1.36z"/></svg>
             Apple Music
         </a>
-        <a href="https://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY&utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="youtube" aria-label="Escuchar Roma en YouTube Music">
+        <a href="https://music.youtube.com/playlist?list=OLAK5uy_lLFDh9TqWbiEJt9OE3O1xnQxWbgpN5-wk&utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="youtube" aria-label="Escuchar Roma en YouTube Music">
             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             YouTube Music
         </a>
-        <a href="https://tidal.com/artist/80639129?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="tidal" aria-label="Escuchar Roma en Tidal">
+        <a href="https://tidal.com/album/530724707?utm_source=instagram&utm_medium=bio_music_page" class="platform-btn" data-platform="tidal" aria-label="Escuchar Roma en Tidal">
             <svg viewBox="0 0 24 24"><path d="M12 4L8 8 4 4 0 8l4 4 4-4 4 4 4-4 4 4 4-4-4-4-4 4-4-4z"/><path d="M12 20l-4-4 4-4 4 4-4 4z"/></svg>
             Tidal
         </a>
@@ -415,9 +415,9 @@
 
         const platforms = {
             spotify: {
-                web: appendUtm('https://open.spotify.com/artist/1Sk41HYNzHRQXudNPvU0RG'),
+                web: appendUtm('https://open.spotify.com/album/7w4C4qvZLG6JggTMFyXMMW'),
                 iosUniversal: true, 
-                androidScheme: appendUtm('spotify://artist/1Sk41HYNzHRQXudNPvU0RG')
+                androidScheme: appendUtm('spotify://album/7w4C4qvZLG6JggTMFyXMMW')
             },
             apple: {
                 web: appendUtm('https://music.apple.com/es/artist/thiago-chalon/6776723181'),
@@ -425,15 +425,15 @@
                 androidScheme: null // Mantenemos el default a la espera de la prueba
             },
             youtube: {
-                web: appendUtm('https://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY'),
+                web: appendUtm('https://music.youtube.com/playlist?list=OLAK5uy_lLFDh9TqWbiEJt9OE3O1xnQxWbgpN5-wk'),
                 iosUniversal: false,
-                iosScheme: 'vnd.youtube://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY',
-                androidScheme: 'vnd.youtube://music.youtube.com/playlist?list=OLAK5uy_lWEgrKvXwchIeprmFTQSb-JCtKoqr9wtY'
+                iosScheme: 'vnd.youtube://music.youtube.com/playlist?list=OLAK5uy_lLFDh9TqWbiEJt9OE3O1xnQxWbgpN5-wk',
+                androidScheme: 'vnd.youtube://music.youtube.com/playlist?list=OLAK5uy_lLFDh9TqWbiEJt9OE3O1xnQxWbgpN5-wk'
             },
             tidal: {
-                web: appendUtm('https://tidal.com/artist/80639129'),
+                web: appendUtm('https://tidal.com/album/530724707'),
                 iosUniversal: true, // Mantenemos la asunción a la espera de la prueba
-                androidScheme: appendUtm('tidal://artist/80639129')
+                androidScheme: appendUtm('tidal://album/530724707')
             }
         };
 
