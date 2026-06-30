@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Permitir a los bots de IA para indexación de búsquedas
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 Sitemap: https://thiagochalon.com/sitemap.xml

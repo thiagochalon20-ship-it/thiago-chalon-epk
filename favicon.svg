@@ -1,22 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-    <defs>
-        <mask id="holeMask">
-            <rect width="256" height="256" fill="white"/>
-            <!-- Left holes -->
-            <rect x="12" y="12" width="24" height="36" rx="6" fill="black" />
-            <rect x="12" y="64" width="24" height="36" rx="6" fill="black" />
-            <rect x="12" y="116" width="24" height="36" rx="6" fill="black" />
-            <rect x="12" y="168" width="24" height="36" fill="black" rx="6"/>
-            <rect x="12" y="220" width="24" height="36" fill="black" rx="6"/>
-            <!-- Right holes -->
-            <rect x="220" y="12" width="24" height="36" rx="6" fill="black" />
-            <rect x="220" y="64" width="24" height="36" rx="6" fill="black" />
-            <rect x="220" y="116" width="24" height="36" rx="6" fill="black" />
-            <rect x="220" y="168" width="24" height="36" fill="black" rx="6"/>
-            <rect x="220" y="220" width="24" height="36" fill="black" rx="6"/>
-        </mask>
-    </defs>
-    <rect width="256" height="256" fill="#141414" mask="url(#holeMask)"/>
-    <rect x="48" y="10" width="160" height="236" fill="none" stroke="rgba(184,153,71,0.4)" stroke-width="2" />
-    <text x="128" y="165" font-family="Georgia, 'Times New Roman', serif" font-size="120" fill="#b89947" text-anchor="middle">TC</text>
+    <circle cx="128" cy="128" r="128" fill="#4A2E2B"/>
+    <circle cx="128" cy="128" r="114" fill="none" stroke="#E5DFD3" stroke-width="3" stroke-opacity="0.5"/>
+    <text x="128" y="172" font-family="'Crimson Text', Georgia, serif" font-size="124" font-weight="600" letter-spacing="2" fill="#E5DFD3" text-anchor="middle">TC</text>
 </svg>

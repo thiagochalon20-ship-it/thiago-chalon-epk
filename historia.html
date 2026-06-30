@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia | Roma — Thiago Chalon</title>
+    <meta name="description" content="El origen de Roma, el primer disco de Thiago Chalon. Influencias, historia y grabación.">
+    <link rel="canonical" href="https://thiagochalon.com/historia">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Historia | Roma — Thiago Chalon">
+    <meta property="og:description" content="El origen de Roma, el primer disco de Thiago Chalon. Influencias, historia y grabación.">
+    <meta property="og:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+    <meta property="og:url" content="https://thiagochalon.com/historia">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Thiago Chalon">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Historia | Roma — Thiago Chalon">
+    <meta name="twitter:description" content="El origen de Roma, el primer disco de Thiago Chalon. Influencias, historia y grabación.">
+    <meta name="twitter:image" content="https://thiagochalon.com/img/Roma-og.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MusicGroup",
+          "@id": "https://thiagochalon.com/#artist",
+          "name": "Thiago Chalon",
+          "url": "https://thiagochalon.com",
+          "genre": ["Indie Pop-Rock", "Rock Argentino"],
+          "description": "Músico y compositor porteño de indie pop-rock con raíz de rock argentino. Influenciado por artistas como Charly García, Arctic Monkeys, Oasis y Pink Floyd.",
+          "sameAs": [
+            "https://www.instagram.com/thiagochalon",
+            "https://music.apple.com/es/artist/thiago-chalon/6776723181",
+            "https://www.youtube.com/@thiagochalon",
+            "https://open.spotify.com/artist/1Sk41HYNzHRQXudNPvU0RG",
+            "https://musicbrainz.org/artist/baeea0de-9988-4a4a-a818-6a071cad6b74"
+          ]
+        },
+        {
+          "@type": "MusicAlbum",
+          "name": "Roma",
+          "@id": "https://thiagochalon.com/#album",
+          "byArtist": {
+            "@id": "https://thiagochalon.com/#artist"
+          },
+          "datePublished": "2026-06-21",
+          "image": "https://thiagochalon.com/img/Roma.webp",
+          "numTracks": 7,
+          "albumReleaseType": "https://schema.org/AlbumRelease",
+          "track": [
+            { "@type": "MusicRecording", "position": 1, "name": "No pienso parar" },
+            { "@type": "MusicRecording", "position": 2, "name": "Cuadro en la pared" },
+            { "@type": "MusicRecording", "position": 3, "name": "Sin sentir" },
+            { "@type": "MusicRecording", "position": 4, "name": "Rusty Bench Jazz" },
+            { "@type": "MusicRecording", "position": 5, "name": "Pero vos mi amor" },
+            { "@type": "MusicRecording", "position": 6, "name": "Salvarte de mí" },
+            { "@type": "MusicRecording", "position": 7, "name": "Roma" }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS global -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        .historia-main {
+            padding: 120px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        .article-section {
+            margin-bottom: 50px;
+        }
+
+        .article-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(74, 46, 43, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .article-section p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .interview-link {
+            display: block;
+            margin-top: 60px;
+            padding: 30px;
+            background-color: rgba(74, 46, 43, 0.05);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .interview-link p {
+            font-style: italic;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .interview-link a {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-primary);
+            transition: opacity 0.3s ease;
+        }
+
+        .interview-link a:hover {
+            opacity: 0.7;
+        }
+
+        .press-kit-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+            box-shadow: 3px 3px 0px rgba(74, 46, 43, 0.3);
+        }
+
+        .press-kit-btn:hover {
+            background-color: var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER NAVEGACION -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <ul class="main-nav">
+                <li><a href="/" class="interactive">Inicio</a></li>
+                <li><a href="/music" class="interactive">Música</a></li>
+                <li><a href="/historia" class="interactive active">Historia</a></li>
+                <li><a href="/galeria" class="interactive">Galería</a></li>
+                <li><a href="/letras" class="interactive">Letras</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="historia-main fade-in-section stagger-container">
+        <h1 class="section-title text-center stagger-item">La Historia de Roma</h1>
+        
+        <div class="article-section stagger-item">
+            <h2>El origen</h2>
+            <p>Estudié Ciencias Políticas y me formé en cine, pero la música se impuso como necesidad creativa. La culpa fue de Pink Floyd: mi hermana se mudó a Buenos Aires y volvía con un disco nuevo en cada visita. Yo tenía la discografía completa impresa y anotada, y me negaba a escuchar nada por adelantado aunque ya existía Spotify.</p>
+            <p>Me encerraba días enteros con cada disco: Animals, Wish You Were Here, The Final Cut, The Wall. En 2015 Gilmour sacó un disco solista y vino a tocar a Argentina. Fui al show, quedé obsesionado con un riff del disco nuevo, agarré una guitarra de mi padre, y ese solo fue de las primeras cosas que aprendí a tocar.</p>
+        </div>
+
+        <div class="article-section stagger-item">
+            <h2>Por qué Roma</h2>
+            <p>El nombre es varias cosas a la vez: imperio y ruina, amor al revés, mi película favorita (la de Aristarain), y un mito — la ciudad eterna que se construyó sobre sus propias ruinas una y otra vez. Lo conecto directamente con Buenos Aires: grandeza y decadencia conviviendo en la misma cuadra.</p>
+        </div>
+
+        <div class="article-section stagger-item">
+            <h2>Las influencias</h2>
+            <p>Fito Páez, Charly García, Blur, Oasis, Arctic Monkeys, los Beatles, Bob Dylan, Fleetwood Mac, Hozier, Sufjan Stevens, Soda Stereo y Pink Floyd. De generaciones, países e idiomas distintos, pero todas conviven en mi forma de ver el mundo.</p>
+        </div>
+
+        <div class="article-section stagger-item">
+            <h2>El sonido</h2>
+            <p>Busqué correrme del sonido mainstream actual, demasiado pulido. Grabamos con la banda tocando en simultáneo en una sala, y dejamos deliberadamente imperfecciones en la mezcla final para darle autenticidad.</p>
+        </div>
+
+        <div class="interview-link stagger-item">
+            <p>La entrevista completa con el origen de estas historias fue publicada por La Opinión Line.</p>
+            <a href="https://www.laopinionline.ar/thiago-chalon-debuta-roma-un-primer-disco-nacido-influencias-busquedas-y-canciones-n5404655" target="_blank" rel="noopener noreferrer" class="interactive">Leer entrevista original &rarr;</a>
+            <br><br>
+            <a href="/galeria-roma-prensa.zip" download class="press-kit-btn interactive">Descargar Press Kit para Periodistas</a>
+        </div>
+    </main>
+
+    <!-- BLOQUE 7: Footer / Ficha Técnica -->
+    <footer class="footer fade-in-section stagger-container">
+        <div class="container-wide">
+            <h3 class="footer-title stagger-item">Detalles del lanzamiento</h3>
+            <div class="grid-5-col stagger-item">
+                <div class="footer-col">
+                    <strong>Lanzamiento:</strong><br>
+                    21 de junio de 2026
+                </div>
+                <div class="footer-col">
+                    <strong>Duración:</strong><br>
+                    25 minutos, 14 segundos
+                </div>
+                <div class="footer-col">
+                    <strong>Plataformas:</strong><br>
+                    <a href="/music" class="interactive">Disponible en todas las plataformas</a>
+                </div>
+                <div class="footer-col">
+                    <strong>Créditos:</strong><br>
+                    <a href="/letras#creditos" class="interactive">Ver equipo de producción</a>
+                </div>
+                <div class="footer-col">
+                    <strong>Contacto:</strong><br>
+                    <a href="mailto:music@thiagochalon.com" class="interactive">music@thiagochalon.com</a><br>
+                    <a href="https://instagram.com/thiago.chalon" target="_blank" rel="noopener noreferrer" style="margin-top: 5px; display: inline-block;" class="interactive">@thiago.chalon</a>
+                </div>
+            </div>
+            <div class="legales-row stagger-item">
+                © 2026 Thiago Chalon. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cursor Magnético Global -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Script global -->
+    <script src="script.js"></script>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
