@@ -48,8 +48,8 @@ async function buildGallery() {
 
     archive.pipe(output);
 
-    // Agregar el archivo de texto de prensa
-    archive.file(path.join(__dirname, '../Info_Prensa_Roma.txt'), { name: 'Roma_Prensa/Info_Prensa_Roma.txt' });
+    // Agregar el PDF de prensa
+    archive.file(path.join(__dirname, '../Roma_Press_Kit.pdf'), { name: 'Roma_Prensa/Roma_Press_Kit.pdf' });
 
     output.on('close', function() {
         console.log(`\nZIP para prensa generado: ${archive.pointer()} bytes totales.`);
