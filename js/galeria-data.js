@@ -1,88 +1,88 @@
 // Generado automáticamente por scripts/build-gallery.js
 const galeriaData = [
     {
-        "thumb": "img/galeria/thumb_thiago_026.webp",
-        "full": "img/galeria/full_thiago_026.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-1.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-1.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_031.webp",
-        "full": "img/galeria/full_thiago_031.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-2.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-2.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_033.webp",
-        "full": "img/galeria/full_thiago_033.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-3.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-3.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_072.webp",
-        "full": "img/galeria/full_thiago_072.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-4.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-4.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_095.webp",
-        "full": "img/galeria/full_thiago_095.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-5.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-5.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_110.webp",
-        "full": "img/galeria/full_thiago_110.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-6.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-6.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_142.webp",
-        "full": "img/galeria/full_thiago_142.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-7.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-7.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_155.webp",
-        "full": "img/galeria/full_thiago_155.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-8.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-8.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_165.webp",
-        "full": "img/galeria/full_thiago_165.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-9.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-9.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_199.webp",
-        "full": "img/galeria/full_thiago_199.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-10.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-10.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_206.webp",
-        "full": "img/galeria/full_thiago_206.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-11.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-11.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_227.webp",
-        "full": "img/galeria/full_thiago_227.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-12.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-12.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_282.webp",
-        "full": "img/galeria/full_thiago_282.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-13.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-13.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_297.webp",
-        "full": "img/galeria/full_thiago_297.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-14.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-14.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_317.webp",
-        "full": "img/galeria/full_thiago_317.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-15.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-15.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_337.webp",
-        "full": "img/galeria/full_thiago_337.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-16.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-16.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     },
     {
-        "thumb": "img/galeria/thumb_thiago_342.webp",
-        "full": "img/galeria/full_thiago_342.webp",
+        "thumb": "img/galeria/thumb_thiago-chalon-roma-oficial-17.webp",
+        "full": "img/galeria/full_thiago-chalon-roma-oficial-17.webp",
         "alt": "Thiago Chalon - Roma - 2026"
     }
 ];

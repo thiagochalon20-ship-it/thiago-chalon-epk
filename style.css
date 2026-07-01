@@ -383,7 +383,7 @@ a:hover { color: var(--accent-primary); }
 .btn-primary {
     display: inline-block;
     background-color: var(--accent-primary);
-    color: var(--bg-main);
+    color: var(--bg-main) !important;
     text-decoration: none;
     padding: 20px 50px;
     font-size: 1.2rem;
@@ -407,7 +407,7 @@ a:hover { color: var(--accent-primary); }
 
 .btn-primary:hover {
     background-color: var(--bg-main);
-    color: var(--accent-primary);
+    color: var(--accent-primary) !important;
     transform: translateY(-2px);
     box-shadow: 6px 6px 0px rgba(74, 46, 43, 0.4);
 }

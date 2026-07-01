@@ -46,6 +46,11 @@ async function buildGallery() {
         zlib: { level: 9 } // Máxima compresión para el zip
     });
 
+    archive.pipe(output);
+
+    // Agregar el archivo de texto de prensa
+    archive.file(path.join(__dirname, '../Info_Prensa_Roma.txt'), { name: 'Roma_Prensa/Info_Prensa_Roma.txt' });
+
     output.on('close', function() {
         console.log(`\nZIP para prensa generado: ${archive.pointer()} bytes totales.`);
         console.log('--- Proceso finalizado con éxito ---');
@@ -54,8 +59,6 @@ async function buildGallery() {
     archive.on('error', function(err) {
         throw err;
     });
-
-    archive.pipe(output);
 
     // 3. Procesar cada imagen
     let counter = 1;
