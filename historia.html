@@ -143,20 +143,20 @@
         }
 
         .faq-item {
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(74, 46, 43, 0.15);
-            padding-bottom: 15px;
+            margin-bottom: 0;
+            border-bottom: 1px solid rgba(74, 46, 43, 0.1);
         }
 
         .faq-question {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 1.4rem;
+            font-style: italic;
             color: var(--text-main);
             cursor: pointer;
             list-style: none; /* Quita flecha nativa */
             position: relative;
-            padding-right: 35px;
-            transition: color 0.3s ease;
+            padding: 15px 35px 15px 0;
+            transition: color 0.3s ease, padding-left 0.3s ease;
         }
 
         /* Custom marker */
@@ -166,9 +166,9 @@
             right: 0;
             top: 50%;
             transform: translateY(-50%);
-            font-family: var(--font-body);
-            font-size: 2rem;
-            color: var(--text-main);
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            font-style: normal;
             font-weight: 300;
         }
 
@@ -182,15 +182,23 @@
 
         .faq-question:hover {
             color: var(--accent-primary);
+            padding-left: 10px;
+        }
+
+        details[open] .faq-question {
+            color: var(--accent-primary);
+            padding-left: 10px;
+            border-bottom-color: transparent;
         }
 
         .faq-answer {
-            font-family: var(--font-body);
+            font-family: 'Crimson Text', serif;
             font-size: 1.15rem;
-            line-height: 1.8;
-            color: rgba(74, 46, 43, 0.85);
-            margin-top: 15px;
-            padding-right: 20px;
+            line-height: 1.7;
+            color: var(--text-main);
+            font-style: normal;
+            margin: 0;
+            padding: 10px 0 40px 10px;
         }
 
         .interview-link {
@@ -222,33 +230,12 @@
             opacity: 0.7;
         }
 
-        .press-kit-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: var(--text-main);
-            color: var(--bg-main);
-            text-decoration: none;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease;
-            box-shadow: 3px 3px 0px rgba(74, 46, 43, 0.3);
-        }
-
-        .press-kit-btn:hover {
-            background-color: var(--accent-primary);
-            color: var(--bg-main) !important;
-            border-bottom: none;
-        }
-
         @media (max-width: 768px) {
             .historia-main {
                 padding: 90px 20px 40px;
             }
             .faq-question {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 padding-right: 25px;
             }
             .faq-question::after {
@@ -314,8 +301,8 @@
         <div class="interview-link stagger-item">
             <p>La entrevista completa con el origen de estas historias fue publicada por La Opinión Line.</p>
             <a href="https://www.laopinionline.ar/thiago-chalon-debuta-roma-un-primer-disco-nacido-influencias-busquedas-y-canciones-n5404655" target="_blank" rel="noopener noreferrer" class="interactive">Leer entrevista original &rarr;</a>
-            <br><br>
-            <a href="/galeria-roma-prensa.zip" download class="press-kit-btn interactive">Descargar Press Kit para Periodistas</a>
+            <br><br><br>
+            <a href="/galeria-roma-prensa.zip" download class="btn-primary interactive">Descargar Press Kit para Periodistas</a>
         </div>
     </main>
 
