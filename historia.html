@@ -63,6 +63,59 @@
             { "@type": "MusicRecording", "position": 6, "name": "Salvarte de mí" },
             { "@type": "MusicRecording", "position": 7, "name": "Roma" }
           ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Quién es Thiago Chalon?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Thiago Chalon es un compositor porteño de 26 años, oriundo de Pergamino, provincia de Buenos Aires. Tiene formación en Ciencias Políticas y una admiración completa por el cine. Desde la adolescencia comenzó a ser músico, de forma autodidacta, hasta debutar en 2026 con su primer álbum, Roma. Vive en la ciudad de Buenos Aires."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Por qué el nombre \"Roma\"?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Roma es varias cosas a la vez: imperio y ruina, amor al revés, un mito — la ciudad eterna que se reconstruyó sobre sus propias ruinas una y otra vez. Es también el título de la película favorita de Thiago, la de Aristarain. El paralelismo con Buenos Aires es directo: grandeza y decadencia conviviendo en la misma cuadra."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo suena Roma?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El disco busca un sonido orgánico, grabado con la banda tocando en simultáneo en una sala, dejando deliberadamente imperfecciones en la mezcla final. A nivel de composición, casi ninguna canción sigue la estructura clásica, sino que buscan romperse, incluso tal vez sin que lo notes: temas como \"No pienso parar\", \"Cuadro en la pared\", \"Pero vos mi amor\" o la propia \"Roma\" buscan quebrarse, ser eclécticos, en eso me refiero a sentirse vivos. Es una decisión buscada -o al menos intentada-."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuáles son tus influencias?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Mis influencias más grandes son: Charly García y Soda Stereo, Blur y Beatles, Fleetwood Mac y Dylan, Twenty One Pilots y Hozier, Arctic Monkeys y Strokes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo ves el mundo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Con desconfianza hacia los extremos. La tercera posición no es tibieza — es rechazo a la comodidad de blanco y negro. Se puede tener una postura firme y aun así entender que casi todo tiene matices. Esa misma idea, tomada de la política y del cine, ordena cómo se piensa una canción. En un mural de mosaicos a la salida de la estación Flores hay una frase firmada por Hugo del Carril: \"No creo en el arte para minorías\"."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué sigue después de Roma?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya hay material nuevo en proceso, y busca lo opuesto a Roma: canciones pensadas casi enteramente alrededor del estribillo, sin la ruptura de forma que definió al primer disco. Es una forma de ponerse a prueba en la dirección contraria, a ver si soy capaz de hacerlo."
+              }
+            }
+          ]
         }
       ]
     }
@@ -89,25 +142,55 @@
             min-height: 80vh;
         }
 
-        .article-section {
-            margin-bottom: 50px;
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(74, 46, 43, 0.15);
+            padding-bottom: 15px;
         }
 
-        .article-section h2 {
+        .faq-question {
             font-family: var(--font-heading);
             font-size: 2rem;
-            color: var(--accent-primary);
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(74, 46, 43, 0.1);
-            padding-bottom: 10px;
+            color: var(--text-main);
+            cursor: pointer;
+            list-style: none; /* Quita flecha nativa */
+            position: relative;
+            padding-right: 35px;
+            transition: color 0.3s ease;
         }
 
-        .article-section p {
+        /* Custom marker */
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
             font-family: var(--font-body);
-            font-size: 1.1rem;
+            font-size: 2rem;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+
+        details[open] .faq-question::after {
+            content: '−';
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-primary);
+        }
+
+        .faq-answer {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
             line-height: 1.8;
-            margin-bottom: 20px;
-            text-align: justify;
+            color: rgba(74, 46, 43, 0.85);
+            margin-top: 15px;
+            padding-right: 20px;
         }
 
         .interview-link {
@@ -156,6 +239,28 @@
 
         .press-kit-btn:hover {
             background-color: var(--accent-primary);
+            color: var(--bg-main) !important;
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .historia-main {
+                padding: 90px 20px 40px;
+            }
+            .faq-question {
+                font-size: 1.5rem;
+                padding-right: 25px;
+            }
+            .faq-question::after {
+                font-size: 1.5rem;
+            }
+            .faq-answer {
+                font-size: 1.05rem;
+            }
+            .interview-link {
+                margin-top: 40px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -176,26 +281,35 @@
     <main class="historia-main fade-in-section stagger-container">
         <h1 class="section-title text-center stagger-item">La Historia de Roma</h1>
         
-        <div class="article-section stagger-item">
-            <h2>El origen</h2>
-            <p>Estudié Ciencias Políticas y me formé en cine, pero la música se impuso como necesidad creativa. La culpa fue de Pink Floyd: mi hermana se mudó a Buenos Aires y volvía con un disco nuevo en cada visita. Yo tenía la discografía completa impresa y anotada, y me negaba a escuchar nada por adelantado aunque ya existía Spotify.</p>
-            <p>Me encerraba días enteros con cada disco: Animals, Wish You Were Here, The Final Cut, The Wall. En 2015 Gilmour sacó un disco solista y vino a tocar a Argentina. Fui al show, quedé obsesionado con un riff del disco nuevo, agarré una guitarra de mi padre, y ese solo fue de las primeras cosas que aprendí a tocar.</p>
-        </div>
+        <details class="faq-item stagger-item">
+            <summary class="faq-question">¿Quién es Thiago Chalon?</summary>
+            <p class="faq-answer">Thiago Chalon es un compositor porteño de 26 años, oriundo de Pergamino, provincia de Buenos Aires. Tiene formación en Ciencias Políticas y una admiración completa por el cine. Desde la adolescencia comenzó a ser músico, de forma autodidacta, hasta debutar en 2026 con su primer álbum, Roma. Vive en la ciudad de Buenos Aires.</p>
+        </details>
 
-        <div class="article-section stagger-item">
-            <h2>Por qué Roma</h2>
-            <p>El nombre es varias cosas a la vez: imperio y ruina, amor al revés, mi película favorita (la de Aristarain), y un mito — la ciudad eterna que se construyó sobre sus propias ruinas una y otra vez. Lo conecto directamente con Buenos Aires: grandeza y decadencia conviviendo en la misma cuadra.</p>
-        </div>
+        <details class="faq-item stagger-item">
+            <summary class="faq-question">¿Por qué el nombre "Roma"?</summary>
+            <p class="faq-answer">Roma es varias cosas a la vez: imperio y ruina, amor al revés, un mito — la ciudad eterna que se reconstruyó sobre sus propias ruinas una y otra vez. Es también el título de la película favorita de Thiago, la de Aristarain. El paralelismo con Buenos Aires es directo: grandeza y decadencia conviviendo en la misma cuadra.</p>
+        </details>
 
-        <div class="article-section stagger-item">
-            <h2>Las influencias</h2>
-            <p>Fito Páez, Charly García, Blur, Oasis, Arctic Monkeys, los Beatles, Bob Dylan, Fleetwood Mac, Hozier, Sufjan Stevens, Soda Stereo y Pink Floyd. De generaciones, países e idiomas distintos, pero todas conviven en mi forma de ver el mundo.</p>
-        </div>
+        <details class="faq-item stagger-item">
+            <summary class="faq-question">¿Cómo suena Roma?</summary>
+            <p class="faq-answer">El disco busca un sonido orgánico, grabado con la banda tocando en simultáneo en una sala, dejando deliberadamente imperfecciones en la mezcla final. A nivel de composición, casi ninguna canción sigue la estructura clásica, sino que buscan romperse, incluso tal vez sin que lo notes: temas como "No pienso parar", "Cuadro en la pared", "Pero vos mi amor" o la propia "Roma" buscan quebrarse, ser eclécticos, en eso me refiero a sentirse vivos. Es una decisión buscada -o al menos intentada-.</p>
+        </details>
 
-        <div class="article-section stagger-item">
-            <h2>El sonido</h2>
-            <p>Busqué correrme del sonido mainstream actual, demasiado pulido. Grabamos con la banda tocando en simultáneo en una sala, y dejamos deliberadamente imperfecciones en la mezcla final para darle autenticidad.</p>
-        </div>
+        <details class="faq-item stagger-item">
+            <summary class="faq-question">¿Cuáles son tus influencias?</summary>
+            <p class="faq-answer">Mis influencias más grandes son: Charly García y Soda Stereo, Blur y Beatles, Fleetwood Mac y Dylan, Twenty One Pilots y Hozier, Arctic Monkeys y Strokes.</p>
+        </details>
+
+        <details class="faq-item stagger-item">
+            <summary class="faq-question">¿Cómo ves el mundo?</summary>
+            <p class="faq-answer">Con desconfianza hacia los extremos. La tercera posición no es tibieza — es rechazo a la comodidad de blanco y negro. Se puede tener una postura firme y aun así entender que casi todo tiene matices. Esa misma idea, tomada de la política y del cine, ordena cómo se piensa una canción. En un mural de mosaicos a la salida de la estación Flores hay una frase firmada por Hugo del Carril: "No creo en el arte para minorías".</p>
+        </details>
+
+        <details class="faq-item stagger-item">
+            <summary class="faq-question">¿Qué sigue después de Roma?</summary>
+            <p class="faq-answer">Ya hay material nuevo en proceso, y busca lo opuesto a Roma: canciones pensadas casi enteramente alrededor del estribillo, sin la ruptura de forma que definió al primer disco. Es una forma de ponerse a prueba en la dirección contraria, a ver si soy capaz de hacerlo.</p>
+        </details>
 
         <div class="interview-link stagger-item">
             <p>La entrevista completa con el origen de estas historias fue publicada por La Opinión Line.</p>

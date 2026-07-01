@@ -58,6 +58,7 @@ async function buildGallery() {
     archive.pipe(output);
 
     // 3. Procesar cada imagen
+    let counter = 1;
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const srcPath = path.join(SOURCE_DIR, file);
@@ -73,10 +74,16 @@ async function buildGallery() {
         }
         processedNames.add(cleanName);
 
-        // Nombres limpios, por las dudas que los originales tengan espacios raros
+        // Nombres limpios originales
         const safeName = cleanName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        const thumbName = `thumb_${safeName}.webp`;
-        const fullName = `full_${safeName}.webp`;
+        
+        // Slug SEO genérico seguro
+        const slug = `thiago-chalon-roma-oficial-${counter}`;
+        const altText = "Thiago Chalon - Roma - 2026";
+        counter++;
+        
+        const thumbName = `thumb_${slug}.webp`;
+        const fullName = `full_${slug}.webp`;
         
         const thumbPath = path.join(DEST_DIR, thumbName);
         const fullPath = path.join(DEST_DIR, fullName);
@@ -112,13 +119,13 @@ async function buildGallery() {
             .toFile(fullPath);
 
         // Agregar archivo ORIGINAL al ZIP de prensa (para que tengan la máxima calidad posible)
-        archive.file(srcPath, { name: `Roma_Prensa/${file}` });
+        archive.file(srcPath, { name: `Roma_Prensa/${slug}.jpg` });
 
         // Agregar al array para el front-end
         galeriaData.push({
             thumb: `img/galeria/${thumbName}`,
             full: `img/galeria/${fullName}`,
-            alt: "Thiago Chalon - Roma - 2026"
+            alt: altText
         });
 
         process.stdout.write(`\rProcesadas: ${i + 1}/${files.length}`);

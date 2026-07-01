@@ -113,6 +113,12 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .galeria-main {
+                padding: 90px 15px 40px;
+            }
+        }
+
         .galeria-item {
             position: relative;
             width: 100%;
@@ -308,6 +314,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             // 1. GENERAR GRID DINÁMICAMENTE CON LAZY LOADING
             const gridContainer = document.getElementById('galeriaGrid');
+            const gallerySchemaImages = [];
             
             galeriaData.forEach((item, index) => {
                 const div = document.createElement('div');
@@ -320,7 +327,33 @@
                 });
                 
                 gridContainer.appendChild(div);
+
+                // Preparar datos para el SEO de Google Imágenes
+                gallerySchemaImages.push({
+                    "@type": "ImageObject",
+                    "contentUrl": "https://thiagochalon.com/" + item.full,
+                    "thumbnailUrl": "https://thiagochalon.com/" + item.thumb,
+                    "name": item.alt,
+                    "creator": {
+                        "@type": "Person",
+                        "name": "Thiago Chalon"
+                    }
+                });
             });
+
+            // 2. INYECTAR JSON-LD DE GALERÍA PARA GOOGLE IMÁGENES
+            const gallerySchema = {
+                "@context": "https://schema.org",
+                "@type": "ImageGallery",
+                "@id": "https://thiagochalon.com/galeria/#gallery",
+                "name": "Galería de Fotos - Thiago Chalon",
+                "description": "Fotos oficiales, detrás de escena y grabación del álbum Roma.",
+                "image": gallerySchemaImages
+            };
+            const scriptSchema = document.createElement('script');
+            scriptSchema.type = 'application/ld+json';
+            scriptSchema.text = JSON.stringify(gallerySchema);
+            document.head.appendChild(scriptSchema);
 
             // 2. LÓGICA DEL LIGHTBOX (Porteado de index.html)
             const lightbox = document.getElementById('lightbox');
